@@ -40,7 +40,7 @@ ${NAME}: $(OBJS) $(OUTPUT_DIR/).keep
 	make -C $(FT_PRINTF_DIR)
 	make -C $(GNL_DIR)
 	make -C $(MLX_DIR)
-	$(CC) $(CFLAGS) $(MLXFLAGS) ${INCLUDE} $(OBJS) ${LDFLAGS} ${LIBS} -o $(NAME)
+	$(CC) $(CFLAGS) $(MLXFLAGS) ${INCLUDE} $(OBJS) ${LDFLAGS} ${LIBS} $(LIBMLX) -o $(NAME)
 
 clean:
 	make -C $(LIBFT_DIR) clean

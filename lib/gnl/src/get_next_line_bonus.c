@@ -6,7 +6,7 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 07:09:54 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/10 17:10:27 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/10 17:34:30 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ char	*ft_read_data(int fd, char *save)
 	if (!buf)
 		return (NULL);
 	read_byte = 1;
-	while (ft_strchr(save, '\n') == NULL)
+	while (ft_strchr_gnl(save, '\n') == NULL)
 	{
 		read_byte = read(fd, buf, BUFFER_SIZE);
 		if (read_byte == 0 || read_byte == -1)
 			break ;
 		buf[read_byte] = '\0';
-		save = ft_strjoin(save, buf);
+		save = ft_strjoin_gnl(save, buf);
 		if (save == NULL)
 			break ;
 	}
@@ -76,7 +76,7 @@ char	*get_remain_data(char *save)
 		free(save);
 		return (NULL);
 	}
-	tmp = (char *)malloc(sizeof(char) * (ft_strlen(save) - i + 1));
+	tmp = (char *)malloc(sizeof(char) * (ft_strlen_gnl(save) - i + 1));
 	if (!tmp)
 		return (NULL);
 	i++;

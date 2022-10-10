@@ -60,7 +60,7 @@ re: fclean all
 libMake: $(OBJS_DIR/).keep
 
 $(OBJS_DIR/)%.o: $(SRCS_DIR/)%.c
-	$(CC) -c $(CFLAGS) $< -o $@
+	$(CC) -c $(CFLAGS) -Imlx $< -o $@
 
 $(OBJS_DIR/).keep $(OUTPUT_DIR/).keep:
 	mkdir -p $(@D)

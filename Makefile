@@ -33,7 +33,7 @@ FT_PRINTF_DIR = ./lib/ft_printf
 GNL_DIR = ./lib/gnl
 MLX_DIR = ./minilibx-linux
 
-all:  libMake ${NAME}
+all: libMake ${NAME}
 
 ${NAME}: $(OBJS) $(OUTPUT_DIR/).keep
 	make -C $(LIBFT_DIR)
@@ -53,6 +53,7 @@ fclean: clean
 	make -C $(LIBFT_DIR) fclean
 	make -C $(GNL_DIR) fclean
 	make -C $(FT_PRINTF_DIR) fclean
+	rm -rf ./minilibx-linux
 	rm $(NAME)
 
 re: fclean all
@@ -60,10 +61,11 @@ re: fclean all
 libMake: $(OBJS_DIR/).keep
 
 $(OBJS_DIR/)%.o: $(SRCS_DIR/)%.c
+	if [ ! -e ./minilibx-linux ]; then git clone git@github.com:42Paris/minilibx-linux.git ; fi
 	$(CC) -c $(CFLAGS) -Imlx $< -o $@
 
 $(OBJS_DIR/).keep $(OUTPUT_DIR/).keep:
 	mkdir -p $(@D)
 	touch $@
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re minilibx

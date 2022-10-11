@@ -6,13 +6,13 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 15:30:59 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/11 16:31:35 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/11 16:44:45 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	load_map(char *file_path)
+char	*load_map(char *file_path)
 {
 	int		fd;
 	char	*str;
@@ -35,6 +35,5 @@ void	load_map(char *file_path)
 		free(tmp);
 		free(line);
 	}
-	free(str);
-	return ;
+	return (str);
 }

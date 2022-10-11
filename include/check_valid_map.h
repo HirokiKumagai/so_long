@@ -1,37 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_map.c                                         :+:      :+:    :+:   */
+/*   check_valid_map.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/11 15:30:59 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/11 17:15:45 by hkumagai         ###   ########.fr       */
+/*   Created: 2022/10/11 17:25:49 by hkumagai          #+#    #+#             */
+/*   Updated: 2022/10/11 17:59:00 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#ifndef CHECK_VALID_MAP_H
+# define CHECK_VALID_MAP_H
 
-char	*load_map(char *file_path)
-{
-	int		fd;
-	char	*str;
-	char	*line;
-	char	*tmp;
-
-	fd = open(file_path, O_RDONLY);
-	if (fd == -1)
-		exit(1);
-	str = ft_strdup("");
-	while (true)
-	{
-		line = get_next_line(fd);
-		if (line == NULL)
-			break ;
-		tmp = str;
-		str = ft_strjoin(str, line);
-		free(tmp);
-		free(line);
-	}
-	return (str);
-}
+void	check_valid_char(char *line);
+void	check_valid_map(char *map);
+#endif

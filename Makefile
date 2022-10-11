@@ -1,7 +1,7 @@
 NAME = so_long
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -g
 ARFLAGS := -rcs
 INCLUDE = -I./include
 LDFLAGS = -Llib/ft_printf -Llib/libft -Llib/gnl
@@ -19,7 +19,7 @@ endif
 
 SRCS_DIR := ./src
 SRCS_DIR/ := $(if $(SRCS_DIR),$(patsubst %//,%/,$(SRCS_DIR)/),)
-SRCS := $(addprefix $(SRCS_DIR/), main.c load_map.c)
+SRCS := $(addprefix $(SRCS_DIR/), main.c load_map.c check_valid_map.c)
 
 OBJS_DIR := ./objs
 OBJS_DIR/ := $(if $(OBJS_DIR),$(patsubst %//,%/,$(OBJS_DIR)/),)

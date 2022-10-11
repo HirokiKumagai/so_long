@@ -6,7 +6,7 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:25:57 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/11 16:25:55 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/11 17:34:13 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include "../lib/libft/include/libft.h"
 # include "../minilibx-linux/mlx.h"
 # include "../include/load_map.h"
+# include "../include/check_valid_map.h"
 
 typedef struct s_mlx_info
 {

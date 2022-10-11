@@ -1,37 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_map.c                                         :+:      :+:    :+:   */
+/*   check_valid_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/11 15:30:59 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/11 17:15:45 by hkumagai         ###   ########.fr       */
+/*   Created: 2022/10/11 17:26:42 by hkumagai          #+#    #+#             */
+/*   Updated: 2022/10/11 18:13:50 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-char	*load_map(char *file_path)
+void	check_valid_char(char *line)
 {
-	int		fd;
-	char	*str;
-	char	*line;
-	char	*tmp;
-
-	fd = open(file_path, O_RDONLY);
-	if (fd == -1)
-		exit(1);
-	str = ft_strdup("");
-	while (true)
+	while (*line != '\0')
 	{
-		line = get_next_line(fd);
-		if (line == NULL)
-			break ;
-		tmp = str;
-		str = ft_strjoin(str, line);
-		free(tmp);
-		free(line);
+		if (*line != '0' && *line != '1' && *line != 'E' \
+			&& *line != 'C' && *line != 'P')
+			exit(1);
+		line++;
 	}
-	return (str);
+	return ;
+}
+
+void	check_valid_map(char *map)
+{
+	char	**lines;
+	char	**tmp;
+
+	lines = ft_split(map, '\n');
+	tmp = lines;
+	while (*lines != NULL)
+	{
+		check_valid_char(*lines);
+		free(*lines);
+		*lines = NULL;
+		lines++;
+	}
+	free(tmp);
+	return ;
 }

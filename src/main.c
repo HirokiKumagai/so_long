@@ -6,7 +6,7 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 16:08:26 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/11 17:07:45 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/11 18:13:00 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,17 @@ int	main(int argc, const char *argv[])
 
 	// t_mlx_info	vars;
 
-	char	*str;
-	char	*tmp;
+	char	*map;
 	if (argc != 2)
 		exit(1);
-	str = load_map((char *)argv[1]);
-	free(str);
+	map = load_map((char *)argv[1]);
+	check_valid_map(map);
+	ft_printf("%s", map);
+	free(map);
 	// vars.mlx = mlx_init();
 	// vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
 	// mlx_hook(vars.win, 2, 1L << 2, closed, &vars);
 	// mlx_loop(vars.mlx);
+	system("leaks so_long");
 	return (0);
 }

@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   check_valid_map_utils.h                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 17:25:57 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/14 00:43:56 by hkumagai         ###   ########.fr       */
+/*   Created: 2022/10/13 23:16:07 by hkumagai          #+#    #+#             */
+/*   Updated: 2022/10/13 23:44:18 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef CHECK_VALID_MAP_UTILS_H
+# define CHECK_VALID_MAP_UTILS_H
 
-# include <stdlib.h>
-# include <stdbool.h>
-# include <fcntl.h>
-# include <stdio.h>
-# include <errno.h>
-# include "../lib/ft_printf/include/ft_printf.h"
-# include "../lib/gnl/include/get_next_line_bonus.h"
-# include "../lib/libft/include/libft.h"
-# include "../minilibx-linux/mlx.h"
-# include "./load_map.h"
-# include "./check_valid_map_utils.h"
-# include "./check_valid_map.h"
+void	check_valid_char(t_map *map);
+void	check_map_valid_shape(t_map *map);
+void	check_map_sides(t_map *map, size_t count_column, \
+						size_t count_row, char *line);
+void	check_map_closed(t_map *map);
+void	check_valid_map_element(t_map *map);
 #endif

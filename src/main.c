@@ -6,7 +6,7 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 16:08:26 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/11 18:13:00 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/14 00:49:52 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 // 	mlx_destroy_window(vars->mlx, vars->win);
 // 	return (0);
 // }
-typedef struct s_map_info
+typedef struct s_mlx_data
 {
 	void	*mlx;
 	void	*win;
-}	t_map;
+}	t_mlx_data;
 
 int	main(int argc, const char *argv[])
 {
@@ -46,19 +46,25 @@ int	main(int argc, const char *argv[])
 	// ④プレイヤーが壁の中に入っていけない
 	// ⑤一手ごとに、現在の移動回数をシェルに表示する
 
-	// t_mlx_info	vars;
+	t_mlx_data	vars;
 
-	char	*map;
+	t_map	*map;
 	if (argc != 2)
 		exit(1);
 	map = load_map((char *)argv[1]);
 	check_valid_map(map);
-	ft_printf("%s", map);
+	ft_printf("%s\n", map->map_element);
+	ft_printf("count_column:		%d\n", map->count_column);
+	ft_printf("count_row:		%d\n", map->count_row);
+	ft_printf("count_exit:		%d\n", map->count_exit);
+	ft_printf("count_collection:	%d\n", map->count_collection);
+	ft_printf("count_player:		%d\n", map->count_player);
+	free(map->map_element);
 	free(map);
-	// vars.mlx = mlx_init();
-	// vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
-	// mlx_hook(vars.win, 2, 1L << 2, closed, &vars);
-	// mlx_loop(vars.mlx);
+	vars.mlx = mlx_init();
+	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "./so_long");
+	mlx_hook(vars.win, 2, 1L << 2, close, &vars);
+	mlx_loop(vars.mlx);
 	system("leaks so_long");
 	return (0);
 }

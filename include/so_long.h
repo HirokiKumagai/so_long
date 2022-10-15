@@ -6,7 +6,7 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:25:57 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/14 00:43:56 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/15 10:27:41 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include "../lib/libft/include/libft.h"
 # include "../minilibx-linux/mlx.h"
 # include "./load_map.h"
+# include "./fill_in_map.h"
 # include "./check_valid_map_utils.h"
 # include "./check_valid_map.h"
 #endif

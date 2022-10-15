@@ -1,22 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_valid_map.c                                  :+:      :+:    :+:   */
+/*   fill_in_map.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/11 17:26:42 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/14 14:42:44 by hkumagai         ###   ########.fr       */
+/*   Created: 2022/10/15 10:26:01 by hkumagai          #+#    #+#             */
+/*   Updated: 2022/10/15 10:27:57 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#ifndef FILL_IN_MAP_H
+# define FILL_IN_MAP_H
 
-void	check_valid_map(t_map *map)
-{
-	check_valid_char(map);
-	check_map_valid_shape(map);
-	check_map_closed(map);
-	check_valid_map_element(map);
-	return ;
-}
+void	fill_in_map(t_map *map);
+#endif

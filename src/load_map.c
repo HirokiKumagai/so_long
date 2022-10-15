@@ -6,7 +6,7 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 15:30:59 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/13 23:24:57 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/14 14:37:15 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,22 +71,24 @@ static void	count_map_element(t_map *map)
 	char	*ele;
 
 	ele = map->map_element;
-	while (*ele != '\0')
+	while (*(map->map_element) != '\0')
 	{
-		if (*ele == 'E')
+		if (*(map->map_element) == 'E')
 			map->count_exit++;
-		if (*ele == 'C')
+		if (*(map->map_element) == 'C')
 			map->count_collection++;
-		if (*ele == 'P')
+		if (*(map->map_element) == 'P')
 			map->count_player++;
-		ele++;
+		map->map_element++;
 	}
+	map->map_element = ele;
 	return ;
 }
 
 t_map	*load_map(char *file_path)
 {
 	t_map	*map;
+
 
 	map = init_map();
 	load_map_element(map, file_path);

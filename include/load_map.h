@@ -6,7 +6,7 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 15:30:13 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/13 23:41:33 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/14 10:52:36 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ typedef struct s_map_info
 	void	*mlx;
 	void	*win;
 	char	*map_element;
+	char	**map;
 	size_t	count_column;
 	size_t	count_row;
 	size_t	count_exit;

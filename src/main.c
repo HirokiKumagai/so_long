@@ -6,18 +6,12 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 16:08:26 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/14 00:49:52 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/15 10:25:05 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-// int closed(int keycode, t_mlx_info *vars)
-// {
-// 	(void)keycode;
-// 	mlx_destroy_window(vars->mlx, vars->win);
-// 	return (0);
-// }
 typedef struct s_mlx_data
 {
 	void	*mlx;
@@ -46,14 +40,21 @@ int	main(int argc, const char *argv[])
 	// ④プレイヤーが壁の中に入っていけない
 	// ⑤一手ごとに、現在の移動回数をシェルに表示する
 
-	t_mlx_data	vars;
+	// t_mlx_data	vars;
+	t_map		*map;
+	size_t		i;
 
-	t_map	*map;
 	if (argc != 2)
 		exit(1);
 	map = load_map((char *)argv[1]);
 	check_valid_map(map);
-	ft_printf("%s\n", map->map_element);
+	fill_in_map(map);
+	i = 0;
+	while (i < map->count_column)
+	{
+		ft_printf("%s\n", map->map[i]);
+		i++;
+	}
 	ft_printf("count_column:		%d\n", map->count_column);
 	ft_printf("count_row:		%d\n", map->count_row);
 	ft_printf("count_exit:		%d\n", map->count_exit);
@@ -61,10 +62,18 @@ int	main(int argc, const char *argv[])
 	ft_printf("count_player:		%d\n", map->count_player);
 	free(map->map_element);
 	free(map);
-	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "./so_long");
-	mlx_hook(vars.win, 2, 1L << 2, close, &vars);
-	mlx_loop(vars.mlx);
+	i = 0;
+	while (i < map->count_column)
+	{
+		free(map->map[i]);
+		i++;
+	}
+	free(map->map[i]);
+	free(map->map);
+	// vars.mlx = mlx_init();
+	// vars.win = mlx_new_window(vars.mlx, 1920, 1080, "./so_long");
+	// mlx_hook(vars.win, 2, 1L << 2, close, &vars);
+	// mlx_loop(vars.mlx);
 	system("leaks so_long");
 	return (0);
 }

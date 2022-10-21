@@ -6,13 +6,13 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 10:25:06 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/15 10:25:38 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/16 15:55:40 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	fill_in_map(t_map *map)
+void	fill_in_map(t_map *map, t_game_data *data)
 {
 	size_t	i;
 	char	**lines;
@@ -34,5 +34,6 @@ void	fill_in_map(t_map *map)
 	}
 	map->map[i] = NULL;
 	free(tmp);
+	data->map = map;
 	return ;
 }

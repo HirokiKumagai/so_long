@@ -6,7 +6,7 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 16:08:26 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/20 13:28:35 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/21 14:29:50 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	init_data(t_game_data *data)
 {
 	data->player.direction = 0;
 	data->player.get_collection_count = 0;
-	data->player.image = P_FRONT_1;
+	data->player.image = P_FRONT;
 	data->player.steps_count = 0;
 }
 

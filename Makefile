@@ -19,7 +19,7 @@ endif
 
 SRCS_DIR := ./src
 SRCS_DIR/ := $(if $(SRCS_DIR),$(patsubst %//,%/,$(SRCS_DIR)/),)
-SRCS := $(addprefix $(SRCS_DIR/), main.c load_map.c check_valid_map.c check_valid_map_utils.c fill_in_map.c display_to_window.c move_player.c event_hook.c)
+SRCS := $(addprefix $(SRCS_DIR/), main.c load_map.c check_valid_map.c check_valid_map_utils.c is_valid_path.c fill_in_map.c display_to_window.c move_player.c event_hook.c errors.c)
 
 OBJS_DIR := ./objs
 OBJS_DIR/ := $(if $(OBJS_DIR),$(patsubst %//,%/,$(OBJS_DIR)/),)

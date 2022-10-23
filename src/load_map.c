@@ -6,7 +6,7 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 15:30:59 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/16 15:37:25 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/23 22:20:16 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static t_map	*init_map(void)
 	map = (t_map *)malloc(sizeof(t_map));
 	if (map == NULL)
 		exit(1);
+	map->valid_flag = false;
 	map->count_column = 0;
 	map->count_row = 0;
 	map->count_exit = 0;

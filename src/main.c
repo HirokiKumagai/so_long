@@ -6,7 +6,7 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 16:08:26 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/21 14:29:50 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/24 00:19:45 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,9 @@ int	main(int argc, const char *argv[])
 
 	if (argc != 2)
 		exit(1);
-	map = load_map((char *)argv[1]);
-	check_valid_map(map);
-	fill_in_map(map, &game_data);
 	init_data(&game_data);
+	map = load_map((char *)argv[1]);
+	map = check_valid_map(&game_data, map);
 	vars.mlx_id = mlx_init();
 	game_data.mlx = &vars;
 	vars.win = mlx_new_window(vars.mlx_id, \

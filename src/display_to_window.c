@@ -6,7 +6,7 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 10:29:21 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/19 22:08:39 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/23 21:59:57 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,14 @@ static void	display_map(t_game_data *data, char *str, int x, int y)
 		get_put_image(data, *str, x, y);
 	else if (*str == 'P')
 	{
-		data->player.x_coordinate = x;
-		data->player.y_coordinate = y;
+		// data->player.x_coordinate = x;
+		// data->player.y_coordinate = y;
 		get_put_image(data, *str, x, y);
 	}
 	else if (*str == 'E')
 	{
-		data->exit.x_coordinate = x;
-		data->exit.y_coordinate = y;
+		// data->exit.x_coordinate = x;
+		// data->exit.y_coordinate = y;
 		get_put_image(data, *str, x, y);
 	}
 	else if (*str == 'O')

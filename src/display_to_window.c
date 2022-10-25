@@ -6,7 +6,7 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 10:29:21 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/23 21:59:57 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/24 02:29:15 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,45 +48,21 @@ void	get_put_image(t_game_data *data, char c, int x, int y)
 	to_window_and_destroy_img(data, x, y, mlx_img);
 }
 
-static void	display_map(t_game_data *data, char *str, int x, int y)
+int	display_map(t_game_data *data)
 {
-	if (*str == '1')
-		get_put_image(data, *str, x, y);
-	else if (*str == '0')
-		get_put_image(data, *str, x, y);
-	else if (*str == 'C')
-		get_put_image(data, *str, x, y);
-	else if (*str == 'P')
-	{
-		// data->player.x_coordinate = x;
-		// data->player.y_coordinate = y;
-		get_put_image(data, *str, x, y);
-	}
-	else if (*str == 'E')
-	{
-		// data->exit.x_coordinate = x;
-		// data->exit.y_coordinate = y;
-		get_put_image(data, *str, x, y);
-	}
-	else if (*str == 'O')
-		get_put_image(data, *str, x, y);
-}
+	size_t	y;
+	size_t	x;
 
-int	put_map(t_game_data *data)
-{
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	while (i < data->map->count_column)
+	y = 0;
+	while (y < data->map->count_column)
 	{
-		j = 0;
-		while (j < data->map->count_row)
+		x = 0;
+		while (x < data->map->count_row)
 		{
-			display_map(data, &data->map->map[i][j], j, i);
-			j++;
+			get_put_image(data, data->map->map[y][x], x, y);
+			x++;
 		}
-		i++;
+		y++;
 	}
 	return (0);
 }

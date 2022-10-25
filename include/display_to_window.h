@@ -6,7 +6,7 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 10:37:18 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/21 14:57:19 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/24 01:23:10 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@
 # define P_LEFT "imgs/player_left.xpm"
 # define P_RIGHT "imgs/player_right.xpm"
 
-int		put_map(t_game_data *data);
+int		display_map(t_game_data *data);
 void	get_put_image(t_game_data *data, char c, int x, int y);
 #endif

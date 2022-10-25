@@ -6,7 +6,7 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 16:08:26 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/24 00:19:45 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/24 02:26:44 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	hook(t_game_data *data)
 {
 	mlx_hook(data->mlx->win, X_EVENT_KEY_PRESS, 1L << 0, key_hook, data);
 	mlx_hook(data->mlx->win, X_EVENT_KEY_EXIT, 1L << 0, end_window, data);
-	mlx_expose_hook(data->mlx->win, put_map, data->mlx);
+	mlx_expose_hook(data->mlx->win, display_map, data->mlx);
 	mlx_loop(data->mlx->mlx_id);
 	return ;
 }
@@ -44,7 +44,7 @@ int	main(int argc, const char *argv[])
 	game_data.mlx = &vars;
 	vars.win = mlx_new_window(vars.mlx_id, \
 		map->count_row * 32, map->count_column * 32, "so_long");
-	put_map(&game_data);
+	display_map(&game_data);
 	hook(&game_data);
 	system("leaks so_long");
 	return (0);

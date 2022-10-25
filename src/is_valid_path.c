@@ -1,117 +1,112 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_valid_path.c                                 :+:      :+:    :+:   */
+/*   is_valid_path.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 15:17:55 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/24 00:18:21 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/25 13:55:54 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-static void	move(t_map *map, size_t x, size_t y)
+static bool	is_end(t_map *map, size_t x, size_t y)
 {
-	size_t	tmp_x;
-	size_t	tmp_y;
-	size_t	tmp;
-
-	// 枠外
 	if (y < 0 || y >= map->count_column || x < 0 || x >= map->count_row)
-	{
-		ft_printf("false\n");
-		return ;
-	}
-	// 壁に当たった場合
+		return (false);
 	if (map->map[y][x] == '1')
-	{
-		ft_printf("wall\n");
-		return ;
-	}
+		return (false);
 	if (map->map[y][x] == '3')
-	{
-		ft_printf("PASSED\n");
-		return ;
-	}
+		return (false);
 	if (map->map[y][x] == 'E')
-	{
-		ft_printf("EXIT\n");
 		map->count_exit--;
-	}
 	if (map->map[y][x] == 'C')
-	{
-		ft_printf("COLLECTION\n");
 		map->count_collection--;
-	}
 	if (map->count_exit == 0 && map->count_collection == 0)
 	{
-		ft_printf("VALID\n");
 		map->valid_flag = true;
+		return (false);
+	}
+	return (true);
+}
+
+void	move(t_map *map, size_t x, size_t y)
+{
+	if (!is_end(map, x, y))
 		return ;
-	}
-	tmp = map->map[y][x];
 	map->map[y][x] = '3';
+	move_up(map, x, y);
+	move_down(map, x, y);
+	move_right(map, x, y);
+	move_left(map, x, y);
+}
 
-	// 上に移動
-	tmp_x = x;
-	tmp_y = y - 1;
-	if (tmp_y >= 0)
-	{
-		if (map->map[tmp_y][tmp_x] != '1' && map->map[tmp_y][tmp_x] != '3')
-		{
-			printf("上\n");
-			move(map, tmp_x, tmp_y);
-		}
-	}
+static void	ft_free_dup(char **src)
+{
+	char	**tmp;
+	size_t	count;
+	size_t	i;
 
-	// 下に移動
-	tmp_x = x;
-	tmp_y = y + 1;
-	if (tmp_y < map->count_column)
+	count = 0;
+	tmp = src;
+	while (*tmp != NULL)
 	{
-		if (map->map[tmp_y][tmp_x] != '1' && map->map[tmp_y][tmp_x] != '3')
-		{
-			printf("下\n");
-			move(map, tmp_x, tmp_y);
-		}
+		count++;
+		tmp++;
 	}
-	// 右に移動
-	tmp_x = x + 1;
-	tmp_y = y;
-	if (tmp_x < map->count_row)
+	i = 0;
+	tmp = src;
+	while (tmp[i] != NULL)
 	{
-		if (map->map[tmp_y][tmp_x] != '1' && map->map[tmp_y][tmp_x] != '3')
-		{
-			printf("右\n");
-			move(map, tmp_x, tmp_y);
-		}
+		free(tmp[i]);
+		tmp[i] = NULL;
+		i++;
 	}
-	// 左に移動
-	tmp_x = x - 1;
-	tmp_y = y;
-	if (tmp_x >= 0)
+	free(tmp);
+}
+
+static char	**ft_dup(char **src)
+{
+	char	**dst;
+	char	**tmp;
+	size_t	count;
+
+	count = 0;
+	tmp = src;
+	while (*tmp != NULL)
 	{
-		if (map->map[tmp_y][tmp_x] != '1' && map->map[tmp_y][tmp_x] != '3')
-		{
-			printf("左\n");
-			move(map, tmp_x, tmp_y);
-		}
+		count++;
+		tmp++;
 	}
-	// map->map[y][x] = tmp;
+	dst = (char **)malloc(sizeof(char *) * (count + 1));
+	if (dst == NULL)
+		return (NULL);
+	tmp = src;
+	count = 0;
+	while (*tmp != NULL)
+	{
+		dst[count] = ft_strdup(*tmp);
+		tmp++;
+		count++;
+	}
+	return (dst);
 }
 
 bool	is_valid_path(t_game_data *data)
 {
-	t_map	check_valid_map;
+	t_map	tmp_map;
 
-	check_valid_map = *(data->map);
-	move(&check_valid_map, data->player.x_coordinate, \
+	tmp_map = *(data->map);
+	tmp_map.map = ft_dup(tmp_map.map);
+	move(&tmp_map, data->player.x_coordinate, \
 			data->player.y_coordinate);
-	if (check_valid_map.valid_flag == false)
+	if (!tmp_map.valid_flag)
 	{
-		ft_printf("false\n");
+		ft_free_dup(tmp_map.map);
+		return (ft_print_error("invalid path"));
 	}
+	ft_free_dup(tmp_map.map);
 	return (true);
 }

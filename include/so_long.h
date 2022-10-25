@@ -6,7 +6,7 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:25:57 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/24 00:32:54 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/25 14:21:33 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 # include "./display_to_window.h"
 
 int		end_window(t_game_data *data);
-bool	check_full_collection_count(t_game_data *data);
+void	check_full_collection_count(t_game_data *data);
 int		move_player(int direction, t_game_data *data, char c);
 bool	is_place_after_moving(int direction, t_game_data *data, char c);
 int		process_player_action(int direction, t_game_data *data);

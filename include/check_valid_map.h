@@ -6,7 +6,7 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 17:25:49 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/25 13:54:00 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/25 14:49:30 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 t_map	*check_valid_map(t_game_data *data, t_map *map);
 bool	is_valid_char(t_map *map);
-bool	is_valid_shape(t_map *map);
+bool	is_valid_rectangle(t_map *map);
 bool	is_valid_sides(t_map *map, size_t count_column, \
 						size_t count_row, char *line);
 bool	is_map_closed(t_map *map);

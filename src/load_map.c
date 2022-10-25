@@ -6,7 +6,7 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 15:30:59 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/23 22:20:16 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/25 14:34:07 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static t_map	*init_map(void)
 
 	map = (t_map *)malloc(sizeof(t_map));
 	if (map == NULL)
-		exit(1);
+		ft_exit_and_print_error("ERROR!!! no memory...");
 	map->valid_flag = false;
 	map->count_column = 0;
 	map->count_row = 0;
@@ -37,8 +37,10 @@ static void	load_map_element(t_map *map, char *file_path)
 
 	fd = open(file_path, O_RDONLY);
 	if (fd == -1)
-		exit(1);
+		ft_exit_and_print_error("ERROR!!! can't open file.");
 	str = ft_strdup("");
+	if (str == NULL)
+		ft_exit_and_print_error("ERROR!!! no memory...");
 	while (true)
 	{
 		line = get_next_line(fd);

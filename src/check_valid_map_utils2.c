@@ -1,47 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_in_map.c                                      :+:      :+:    :+:   */
+/*   check_valid_map_utils2.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 10:25:06 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/23 22:00:43 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/25 14:36:49 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-static void	tmp(t_game_data *data, char *str, int x, int y)
-{
-	if (*str == 'P')
-	{
-		data->player.x_coordinate = x;
-		data->player.y_coordinate = y;
-	}
-	else if (*str == 'E')
-	{
-		data->exit.x_coordinate = x;
-		data->exit.y_coordinate = y;
-	}
-	return ;
-}
-
 void	search_player_and_exit(t_game_data*data, t_map *map)
 {
-	size_t	i;
-	size_t	j;
+	size_t	y;
+	size_t	x;
 
-	i = 0;
-	while (i < map->count_column)
+	y = 0;
+	while (y < map->count_column)
 	{
-		j = 0;
-		while (j < map->count_row)
+		x = 0;
+		while (x < map->count_row)
 		{
-			tmp(data, &map->map[i][j], j, i);
-			j++;
+			if (map->map[y][x] == 'P')
+			{
+				data->player.x_coordinate = x;
+				data->player.y_coordinate = y;
+			}
+			else if (map->map[y][x] == 'E')
+			{
+				data->exit.x_coordinate = x;
+				data->exit.y_coordinate = y;
+			}
+			x++;
 		}
-		i++;
+		y++;
 	}
 }
 
@@ -53,10 +47,10 @@ void	fill_in_map(t_game_data *data, t_map *map)
 
 	map->map = (char **)malloc(sizeof(char *) * (map->count_column + 1));
 	if (!map->map)
-		exit(1);
+		ft_exit_and_print_error("ERROR!!! no memory...");
 	lines = ft_split(map->map_element, '\n');
 	if (lines == NULL)
-		exit(1);
+		ft_exit_and_print_error("ERROR!!! no memory...");
 	tmp = lines;
 	i = 0;
 	while (*lines != NULL)

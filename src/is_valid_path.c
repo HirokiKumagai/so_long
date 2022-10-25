@@ -6,7 +6,7 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 15:17:55 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/25 13:55:54 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/25 14:37:55 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ bool	is_valid_path(t_game_data *data)
 	if (!tmp_map.valid_flag)
 	{
 		ft_free_dup(tmp_map.map);
-		return (ft_print_error("invalid path"));
+		return (ft_print_error("ERROR!!! invalid path."));
 	}
 	ft_free_dup(tmp_map.map);
 	return (true);

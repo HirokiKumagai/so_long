@@ -6,13 +6,13 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 11:29:31 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/21 14:57:37 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/25 14:22:11 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-bool	check_full_collection_count(t_game_data *data)
+void	check_full_collection_count(t_game_data *data)
 {
 	size_t	max_collection_count;
 	size_t	get_collection_count;
@@ -31,9 +31,8 @@ bool	check_full_collection_count(t_game_data *data)
 		data->map->map[data->exit.y_coordinate][data->exit.x_coordinate] = 'O';
 		get_put_image(data, 'O', data->exit.x_coordinate, \
 				data->exit.y_coordinate);
-		return (true);
 	}
-	return (false);
+	return ;
 }
 
 static void	replace_map_before_moving(t_game_data *data, char c)

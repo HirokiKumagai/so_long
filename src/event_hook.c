@@ -6,7 +6,7 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 11:34:12 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/25 14:35:37 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/25 14:54:20 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	end_window(t_game_data *data)
 	free(data->map->map[i]);
 	free(data->map->map);
 	mlx_destroy_window(data->mlx->mlx_id, data->mlx->win);
-	system("leaks so_long");
 	exit(EXIT_SUCCESS);
 }
 

@@ -6,7 +6,7 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 16:08:26 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/25 14:23:16 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/25 14:53:32 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,5 @@ int	main(int argc, const char *argv[])
 		map->count_row * 32, map->count_column * 32, "so_long");
 	display_map(&game_data);
 	hook(&game_data);
-	system("leaks so_long");
 	return (0);
 }

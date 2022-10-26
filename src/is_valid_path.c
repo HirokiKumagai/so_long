@@ -6,7 +6,7 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 15:17:55 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/25 14:37:55 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/26 14:55:14 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static bool	is_end(t_map *map, size_t x, size_t y)
 {
-	if (y < 0 || y >= map->count_column || x < 0 || x >= map->count_row)
+	if (y >= map->count_column || x >= map->count_row)
 		return (false);
 	if (map->map[y][x] == '1')
 		return (false);

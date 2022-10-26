@@ -6,7 +6,7 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 16:08:26 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/25 14:53:32 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/26 09:03:34 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(int argc, const char *argv[])
 	t_game_data	game_data;
 
 	if (argc != 2)
-		exit(1);
+		ft_exit_and_print_error("ERROR!!! invalid args.");
 	init_data(&game_data);
 	map = load_map((char *)argv[1]);
 	map = check_valid_map(&game_data, map);

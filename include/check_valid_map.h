@@ -6,7 +6,7 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 17:25:49 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/25 14:49:30 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/28 11:38:51 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,5 @@ void	move_right(t_map *map, size_t x, size_t y);
 void	move_left(t_map *map, size_t x, size_t y);
 void	move(t_map *map, size_t x, size_t y);
 bool	is_valid_path(t_game_data *data);
+bool	is_valid_map_size(t_game_data *data);
 #endif

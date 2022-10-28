@@ -6,7 +6,7 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 10:29:21 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/24 02:29:15 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/28 15:27:30 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,24 @@ void	get_put_image(t_game_data *data, char c, int x, int y)
 	int		img_height;
 
 	mlx_img = NULL;
-	if (c == '1')
+	if (c == WALL)
 		mlx_img = mlx_xpm_file_to_image(data->mlx->mlx_id, \
-					(char *)WALL, &img_width, &img_height);
-	else if (c == '0')
+					(char *)WALL_IMG, &img_width, &img_height);
+	else if (c == GROUND)
 		mlx_img = mlx_xpm_file_to_image(data->mlx->mlx_id, \
-					(char *)GROUND, &img_width, &img_height);
+					(char *)GROUND_IMG, &img_width, &img_height);
 	else if (c == 'C')
 		mlx_img = mlx_xpm_file_to_image(data->mlx->mlx_id, \
-					(char *)COLLECT, &img_width, &img_height);
-	else if (c == 'P')
+					(char *)COLLECT_IMG, &img_width, &img_height);
+	else if (c == PLAYER)
 		mlx_img = mlx_xpm_file_to_image(data->mlx->mlx_id, \
 					data->player.image, &img_width, &img_height);
-	else if (c == 'E')
+	else if (c == EXIT_CLOSE)
 		mlx_img = mlx_xpm_file_to_image(data->mlx->mlx_id, \
-					(char *)EXIT_CLOSE, &img_width, &img_height);
-	else if (c == 'O')
+					(char *)EXIT_CLOSE_IMG, &img_width, &img_height);
+	else if (c == EXIT_OPEN)
 		mlx_img = mlx_xpm_file_to_image(data->mlx->mlx_id, \
-					(char *)EXIT_OPEN, &img_width, &img_height);
+					(char *)EXIT_OPEN_IMG, &img_width, &img_height);
 	to_window_and_destroy_img(data, x, y, mlx_img);
 }
 

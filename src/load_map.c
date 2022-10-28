@@ -6,19 +6,19 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 15:30:59 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/25 14:34:07 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/28 15:19:13 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-static t_map	*init_map(void)
+static	t_map	*init_map(void)
 {
 	t_map	*map;
 
 	map = (t_map *)malloc(sizeof(t_map));
 	if (map == NULL)
-		ft_exit_and_print_error("ERROR!!! no memory...");
+		ft_exit_and_print_error("Error\nno memory...");
 	map->valid_flag = false;
 	map->count_column = 0;
 	map->count_row = 0;
@@ -37,10 +37,10 @@ static void	load_map_element(t_map *map, char *file_path)
 
 	fd = open(file_path, O_RDONLY);
 	if (fd == -1)
-		ft_exit_and_print_error("ERROR!!! can't open file.");
+		ft_exit_and_print_error("Error\ncan't open file.");
 	str = ft_strdup("");
 	if (str == NULL)
-		ft_exit_and_print_error("ERROR!!! no memory...");
+		ft_exit_and_print_error("Error\nno memory...");
 	while (true)
 	{
 		line = get_next_line(fd);
@@ -61,6 +61,8 @@ static void	count_map_row(t_map *map)
 	char	*line;
 
 	line = map->map_element;
+	if (line == NULL || *line == '\0')
+		ft_exit_and_print_error("Error\nThere is no char.");
 	while (*line != '\n')
 	{
 		line++;
@@ -76,11 +78,11 @@ static void	count_map_element(t_map *map)
 	ele = map->map_element;
 	while (*(map->map_element) != '\0')
 	{
-		if (*(map->map_element) == 'E')
+		if (*(map->map_element) == EXIT_CLOSE)
 			map->count_exit++;
-		if (*(map->map_element) == 'C')
+		if (*(map->map_element) == COLLECTION)
 			map->count_collection++;
-		if (*(map->map_element) == 'P')
+		if (*(map->map_element) == PLAYER)
 			map->count_player++;
 		map->map_element++;
 	}

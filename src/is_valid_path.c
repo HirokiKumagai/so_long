@@ -6,7 +6,7 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 15:17:55 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/26 14:55:14 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/28 15:24:35 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ static bool	is_end(t_map *map, size_t x, size_t y)
 {
 	if (y >= map->count_column || x >= map->count_row)
 		return (false);
-	if (map->map[y][x] == '1')
+	if (map->map[y][x] == WALL)
 		return (false);
 	if (map->map[y][x] == '3')
 		return (false);
-	if (map->map[y][x] == 'E')
+	if (map->map[y][x] == EXIT_CLOSE)
 		map->count_exit--;
-	if (map->map[y][x] == 'C')
+	if (map->map[y][x] == COLLECTION)
 		map->count_collection--;
 	if (map->count_exit == 0 && map->count_collection == 0)
 	{
@@ -100,12 +100,12 @@ bool	is_valid_path(t_game_data *data)
 
 	tmp_map = *(data->map);
 	tmp_map.map = ft_dup(tmp_map.map);
-	move(&tmp_map, data->player.x_coordinate, \
-			data->player.y_coordinate);
+	move(&tmp_map, data->player.x_point, \
+			data->player.y_point);
 	if (!tmp_map.valid_flag)
 	{
 		ft_free_dup(tmp_map.map);
-		return (ft_print_error("ERROR!!! invalid path."));
+		return (ft_print_error("Error\ninvalid path."));
 	}
 	ft_free_dup(tmp_map.map);
 	return (true);

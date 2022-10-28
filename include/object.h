@@ -6,12 +6,18 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 13:34:51 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/23 22:16:38 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/28 15:24:35 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OBJECT_H
 # define OBJECT_H
+# define WALL '1'
+# define GROUND '0'
+# define COLLECTION 'C'
+# define EXIT_CLOSE 'E'
+# define EXIT_OPEN 'O'
+# define PLAYER 'P'
 
 typedef struct s_mlx_data
 {
@@ -22,8 +28,8 @@ typedef struct s_mlx_data
 typedef struct s_player
 {
 	int		direction;
-	int		x_coordinate;
-	int		y_coordinate;
+	int		x_point;
+	int		y_point;
 	size_t	steps_count;
 	size_t	get_collection_count;
 	char	*image;
@@ -31,8 +37,8 @@ typedef struct s_player
 
 typedef struct s_exit
 {
-	int		x_coordinate;
-	int		y_coordinate;
+	int		x_point;
+	int		y_point;
 	bool	is_open;
 }	t_exit;
 
@@ -48,6 +54,8 @@ typedef struct s_map_data
 	size_t	count_exit;
 	size_t	count_player;
 	size_t	count_collection;
+	int		*max_height;
+	int		*max_width;
 }	t_map;
 
 typedef struct s_game_data

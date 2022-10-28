@@ -6,7 +6,7 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 11:34:12 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/25 14:54:20 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/28 15:24:35 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,30 +36,30 @@ bool	is_place_after_moving(int direction, t_game_data *data, char c)
 
 	tmp = data->player;
 	if (direction == UP || direction == KEY_W_UP)
-		tmp.y_coordinate -= 1;
+		tmp.y_point -= 1;
 	if (direction == DOWN || direction == KEY_S_DOWN)
-		tmp.y_coordinate++;
+		tmp.y_point++;
 	if (direction == RIGHT || direction == KEY_A_LEFT)
-		tmp.x_coordinate++;
+		tmp.x_point++;
 	if (direction == LEFT || direction == KEY_D_RIGHT)
-		tmp.x_coordinate -= 1;
-	if (data->map->map[tmp.y_coordinate][tmp.x_coordinate] == c)
+		tmp.x_point -= 1;
+	if (data->map->map[tmp.y_point][tmp.x_point] == c)
 		return (true);
 	return (false);
 }
 
 int	process_player_action(int direction, t_game_data *data)
 {
-	if (is_place_after_moving(direction, data, '1'))
+	if (is_place_after_moving(direction, data, WALL))
 		return (false);
-	else if (is_place_after_moving(direction, data, '0'))
-		return (move_player(direction, data, '0'));
-	else if (is_place_after_moving(direction, data, 'E'))
-		return (move_player(direction, data, 'E'));
-	else if (is_place_after_moving(direction, data, 'O'))
-		return (move_player(direction, data, 'O'));
-	else if (is_place_after_moving(direction, data, 'C'))
-		return (move_player(direction, data, '0'));
+	else if (is_place_after_moving(direction, data, GROUND))
+		return (move_player(direction, data, GROUND));
+	else if (is_place_after_moving(direction, data, EXIT_CLOSE))
+		return (move_player(direction, data, EXIT_CLOSE));
+	else if (is_place_after_moving(direction, data, EXIT_OPEN))
+		return (move_player(direction, data, EXIT_OPEN));
+	else if (is_place_after_moving(direction, data, COLLECTION))
+		return (move_player(direction, data, GROUND));
 	return (false);
 }
 

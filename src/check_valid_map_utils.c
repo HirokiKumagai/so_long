@@ -6,7 +6,7 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 17:26:42 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/25 14:48:44 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/28 15:18:57 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@ bool	is_valid_char(t_map *map)
 
 	lines = ft_split(map->map_element, '\n');
 	if (lines == NULL)
-		return (ft_print_error("ERROR!!! no memory."));
+		return (ft_print_error("Error\nno memory."));
 	tmp = lines;
 	while (*lines != NULL)
 	{
 		line = *lines;
 		while (*line != '\0')
 		{
-			if (*line != '0' && *line != '1' && *line != 'E' \
-				&& *line != 'C' && *line != 'P')
-				return (ft_print_error("ERROR!!! invalid char."));
+			if (*line != GROUND && *line != WALL && *line != EXIT_CLOSE \
+				&& *line != COLLECTION && *line != PLAYER)
+				return (ft_print_error("Error\ninvalid char."));
 			line++;
 		}
 		free(*lines);
@@ -49,14 +49,14 @@ bool	is_valid_rectangle(t_map *map)
 
 	lines = ft_split(map->map_element, '\n');
 	if (lines == NULL)
-		return (ft_print_error("ERROR!!! no memory."));
+		return (ft_print_error("Error\nno memory."));
 	tmp = lines;
 	while (*lines != NULL)
 	{
 		line = *lines;
 		count = ft_strlen(line);
 		if (count != map->count_row)
-			return (ft_print_error("ERROR!!! invalid rectangle."));
+			return (ft_print_error("Error\ninvalid rectangle."));
 		free(*lines);
 		*lines = NULL;
 		lines++;
@@ -71,10 +71,10 @@ bool	is_valid_sides(t_map *map, size_t count_column,
 	while (*line != '\0')
 	{
 		if ((count_column == 0 || count_column == map->count_column - 1) \
-			&& *line != '1')
+			&& *line != WALL)
 			return (false);
 		else if ((count_row == 0 || count_row == map->count_row - 1) \
-			&& *line != '1')
+			&& *line != WALL)
 			return (false);
 		count_row++;
 		line++;
@@ -92,7 +92,7 @@ bool	is_map_closed(t_map *map)
 
 	lines = ft_split(map->map_element, '\n');
 	if (lines == NULL)
-		return (ft_print_error("ERROR!!! no memory."));
+		return (ft_print_error("Error\nno memory."));
 	tmp = lines;
 	count_column = 0;
 	while (*lines != NULL)
@@ -100,7 +100,7 @@ bool	is_map_closed(t_map *map)
 		line = *lines;
 		count_row = 0;
 		if (!is_valid_sides(map, count_column, count_row, line))
-			return (ft_print_error("ERROR!!! invalid map sides."));
+			return (ft_print_error("Error\ninvalid map sides."));
 		count_column++;
 		free(*lines);
 		*lines = NULL;
@@ -113,12 +113,12 @@ bool	is_map_closed(t_map *map)
 bool	is_valid_map_element(t_map *map)
 {
 	if (map->count_exit != 1 && map->count_player != 1)
-		return (ft_print_error("ERROR!!! invalid count of exit and player."));
+		return (ft_print_error("Error\ninvalid count of exit and player."));
 	if (map->count_exit != 1)
-		return (ft_print_error("ERROR!!! invalid count of exit."));
+		return (ft_print_error("Error\ninvalid count of exit."));
 	if (map->count_player != 1)
-		return (ft_print_error("ERROR!!! invalid count of player."));
+		return (ft_print_error("Error\ninvalid count of player."));
 	if (map->count_collection < 1)
-		return (ft_print_error("ERROR!!! not enough collections."));
+		return (ft_print_error("Error\nnot enough collections."));
 	return (true);
 }

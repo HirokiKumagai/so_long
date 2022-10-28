@@ -6,7 +6,7 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 16:08:26 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/26 09:03:34 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/28 15:11:03 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	init_data(t_game_data *data)
 {
 	data->player.direction = 0;
 	data->player.get_collection_count = 0;
-	data->player.image = P_FRONT;
+	data->player.image = P_FRONT_IMG;
 	data->player.steps_count = 0;
 }
 
@@ -36,12 +36,13 @@ int	main(int argc, const char *argv[])
 	t_game_data	game_data;
 
 	if (argc != 2)
-		ft_exit_and_print_error("ERROR!!! invalid args.");
+		ft_exit_and_print_error("Error\ninvalid args.");
 	init_data(&game_data);
-	map = load_map((char *)argv[1]);
-	map = check_valid_map(&game_data, map);
 	vars.mlx_id = mlx_init();
 	game_data.mlx = &vars;
+	map = load_map((char *)argv[1]);
+	game_data.map = map;
+	map = check_valid_map(&game_data, map);
 	vars.win = mlx_new_window(vars.mlx_id, \
 		map->count_row * 32, map->count_column * 32, "so_long");
 	display_map(&game_data);

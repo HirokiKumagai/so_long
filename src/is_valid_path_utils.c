@@ -6,7 +6,7 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 15:17:55 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/26 15:08:37 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/28 15:16:51 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	move_up(t_map *map, size_t x, size_t y)
 	move_after_y = y - 1;
 	if (move_after_y >= 0)
 	{
-		if (map->map[move_after_y][move_after_x] != '1' && \
+		if (map->map[move_after_y][move_after_x] != WALL && \
 			map->map[move_after_y][move_after_x] != '3')
 			move(map, move_after_x, (size_t)move_after_y);
 	}
@@ -36,7 +36,7 @@ void	move_down(t_map *map, size_t x, size_t y)
 	move_after_y = y + 1;
 	if (move_after_y < map->count_column)
 	{
-		if (map->map[move_after_y][move_after_x] != '1' && \
+		if (map->map[move_after_y][move_after_x] != WALL && \
 			map->map[move_after_y][move_after_x] != '3')
 			move(map, move_after_x, move_after_y);
 	}
@@ -51,7 +51,7 @@ void	move_right(t_map *map, size_t x, size_t y)
 	move_after_y = y;
 	if (move_after_x < map->count_row)
 	{
-		if (map->map[move_after_y][move_after_x] != '1' && \
+		if (map->map[move_after_y][move_after_x] != WALL && \
 			map->map[move_after_y][move_after_x] != '3')
 			move(map, move_after_x, move_after_y);
 	}
@@ -66,7 +66,7 @@ void	move_left(t_map *map, size_t x, size_t y)
 	move_after_y = y;
 	if (move_after_x >= 0)
 	{
-		if (map->map[move_after_y][move_after_x] != '1' && \
+		if (map->map[move_after_y][move_after_x] != WALL && \
 			map->map[move_after_y][move_after_x] != '3')
 			move(map, (size_t)move_after_x, move_after_y);
 	}

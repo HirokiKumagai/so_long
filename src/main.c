@@ -6,7 +6,7 @@
 /*   By: hkumagai <hkumagai@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 16:08:26 by hkumagai          #+#    #+#             */
-/*   Updated: 2022/10/28 15:11:03 by hkumagai         ###   ########.fr       */
+/*   Updated: 2022/10/31 19:11:12 by hkumagai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	hook(t_game_data *data)
 {
 	mlx_hook(data->mlx->win, X_EVENT_KEY_PRESS, 1L << 0, key_hook, data);
 	mlx_hook(data->mlx->win, X_EVENT_KEY_EXIT, 1L << 0, end_window, data);
-	mlx_expose_hook(data->mlx->win, display_map, data->mlx);
+	mlx_expose_hook(data->mlx->win, display_map, data);
 	mlx_loop(data->mlx->mlx_id);
 	return ;
 }
